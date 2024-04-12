@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Item } from '../item';
+import { ItemComponent } from './item/item.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, ItemComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -28,6 +30,10 @@ export class AppComponent {
       description,
       done: false,
     });
+  }
+
+  remove(item: Item) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
   }
 
   get items() {
